@@ -60,17 +60,54 @@
       color: #8b949e;
       font-size: 0.95rem;
     }
-	
-	#description {
-	white-space: pre-line;
-	}
 
-	details summary {
-	cursor: pointer;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-	
+    #description {
+      white-space: pre-line;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .hidden-contact {
+      display: none;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .contact-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-label {
+      font-weight: bold;
+    }
+
+    .contact-value {
+      color: #8b949e;
+      text-decoration: none;
+    }
+
+    .contact-value:hover {
+      color: #58a6ff;
+    }
   </style>
 </head>
 
@@ -91,10 +128,10 @@
       </div>
     </div>
 
-	<div class="section" id="experienceSection">
-	  <h2>Experiencia Laboral</h2>
-	  <div id="experience"></div>
-	</div>
+    <div class="section" id="experienceSection">
+      <h2>Experiencia Laboral</h2>
+      <div id="experience"></div>
+    </div>
 
     <div class="section">
       <h2>Cursos y Certificaciones</h2>
@@ -113,15 +150,14 @@
       </div>
     </div>
 
-    <div class="section">
+    <div class="section hidden-contact" id="contactSection">
       <h2>Contacto</h2>
-      <div class="card" id="contact"></div>
+      <div class="card contact-card" id="contact"></div>
     </div>
 
   </div>
 
   <script>
-    //  CONFIG
     const profile = {
       name: "Victor A.",
       role: "Especialista de Ciberseguridad",
@@ -130,166 +166,190 @@
       cv: {
         label: "Solicitar CV",
         link: "#",
-		visible: false
+        visible: false
       },
 
       whatIDo: [
-        "Seguridad: WAF/WAAP, Anti-DDoS, Respuesta a Incidentes, Monitoreo de Amenazas",	
-		"Plataformas WAF/WAAP: Imperva, Radware, Defense Pro, Azure WAF, Azure Front Door",
+        "Seguridad: WAF/WAAP, Anti-DDoS, Respuesta a Incidentes, Monitoreo de Amenazas",
+        "Plataformas WAF/WAAP: Imperva, Radware, Defense Pro, Azure WAF, Azure Front Door",
         "Seguridad de Aplicaciones: OWASP Top 10 Risks, WAF Tuning, Security Headers, CSP",
         "Cloud: Azure, Entornos Cloud",
         "Infraestructura: Linux, Windows Server, Active Directory, Office 365, Citrix",
-		"Redes: TCP/IP, DNS, VPN, Proxy",
-		"Herramientas: SSH, RDP, WHM/cPanel, Kali Linux, Nmap, Wireshark"],
-		
-		experienceVisible: false,
-		experience: [
-	  {
-		role: "Especialista de Ciberseguridad",
-		company: "Entel Digital - Centro de Ciberinteligencia (CCI)",
-		period: "Agosto 2022 - Marzo 2026",
-		items: [
-		  "Operación y administración de plataformas WAF/WAAP y Anti-DDoS: Imperva, Radware y Azure WAF.",
-		  "Optimización de aplicaciones web mediante WAF tuning, security headers, implementación de CSP y mitigación de riesgos OWASP.",
-		  "Monitoreo y respuesta a incidentes de seguridad, asegurando continuidad operacional y cumplimiento de SLA."
-		]
-	  }
-	],
+        "Redes: TCP/IP, DNS, VPN, Proxy",
+        "Herramientas: SSH, RDP, WHM/cPanel, Kali Linux, Nmap, Wireshark"
+      ],
+
+      experienceVisible: false,
+      experience: [
+        {
+          role: "Especialista de Ciberseguridad",
+          company: "Entel Digital - Centro de Ciberinteligencia (CCI)",
+          period: "Agosto 2022 - Marzo 2026",
+          items: [
+            "Operación y administración de plataformas WAF/WAAP y Anti-DDoS: Imperva, Radware y Azure WAF.",
+            "Optimización de aplicaciones web mediante WAF tuning, security headers, implementación de CSP y mitigación de riesgos OWASP.",
+            "Monitoreo y respuesta a incidentes de seguridad, asegurando continuidad operacional y cumplimiento de SLA."
+          ]
+        }
+      ],
+
+      skills: {
+        "Seguridad de aplicaciones": [
+          "Cloud WAF",
+          "WAF/WAAP",
+          "Imperva",
+          "Radware Cloud WAF",
+          "Bot Manager",
+          "OWASP Top 10",
+          "Security Headers",
+          "CSP",
+          "Gestión de API"
+        ],
+
+        "Anti-DDoS y seguridad de redes": [
+          "DDoS",
+          "DefensePro-X",
+          "Seguridad de redes",
+          "Networking",
+          "TCP/IP",
+          "DNS",
+          "VPN",
+          "Operaciones de redes informáticas",
+          "Gestión de redes"
+        ],
+
+        "Cloud y arquitectura": [
+          "Cloud Computing",
+          "Azure",
+          "Fundamentos de arquitectura cloud",
+          "Seguridad cloud",
+          "DevOps",
+          "Compliance en la nube"
+        ],
+
+        "Herramientas y frameworks de seguridad": [
+          "Cyber Controller",
+          "Cyber Controller Plus",
+          "MITRE ATT&CK",
+          "Deep Security",
+          "SIEM",
+          "Logs",
+          "Wireshark",
+          "Nmap",
+          "Kali Linux"
+        ],
+
+        "Sistemas e infraestructura": [
+          "Linux",
+          "Windows Server",
+          "Administración de sistemas Linux",
+          "Administración de sistemas",
+          "Administración de servidores",
+          "Servidores",
+          "Active Directory",
+          "Office 365",
+          "Citrix"
+        ],
+
+        "Ciberseguridad ofensiva": [
+          "Ethical Hacking",
+          "Penetration Testing",
+          "Pentesting",
+          "Análisis de vulnerabilidades"
+        ],
+
+        "Hosting y correo": [
+          "cPanel",
+          "WHM",
+          "Plesk",
+          "Exim",
+          "Mdaemon",
+          "Microsoft Exchange",
+          "Correo electrónico"
+        ],
+
+        "Soporte y análisis técnico": [
+          "Soporte Técnico",
+          "Resolución de problemas",
+          "Análisis de sistemas",
+          "Análisis de sistemas informáticos",
+          "Atención al cliente",
+          "Microsoft Office"
+        ]
+      },
 
       certifications: [
-		{
+        {
           category: "Microsoft",
-		  items: ["AZ-900 Microsoft Certified: Azure Fundamentals - 2023"]
+          items: ["AZ-900 Microsoft Certified: Azure Fundamentals - 2023"]
         },
         {
           category: "Imperva",
-		  items: ["Cloud Based Application Security and Delivery (SLE) - 2023", "Imperva Cloud Application Security Workshop - Overview (SLE) - 2023", "IU_Cloud Web Security Administration Instructor-Led - 2023"]
+          items: [
+            "Cloud Based Application Security and Delivery (SLE) - 2023",
+            "Imperva Cloud Application Security Workshop - Overview (SLE) - 2023",
+            "IU_Cloud Web Security Administration Instructor-Led - 2023"
+          ]
         },
-		{
+        {
           category: "Radware",
-		  items: ["Cloud Native Protection (CNP) - 2022", "Cloud WAF - 2023","Bot Manager - 2023","DefensePro-X Level 1 & 2 Training - 2024","DefensePro-X Level 1 Certificartion (RCSS) - 2024","Entrenamiento de Cloud WAF en Español - 2024","Data Center - Course Completion - 2025","Cloud WAF Certification - 2025","Cloud WAF Trainig - 2025","Cyber Controller Plus Training - 2025"]
+          items: [
+            "Cloud Native Protection (CNP) - 2022",
+            "Cloud WAF - 2023",
+            "Bot Manager - 2023",
+            "DefensePro-X Level 1 & 2 Training - 2024",
+            "DefensePro-X Level 1 Certificartion (RCSS) - 2024",
+            "Entrenamiento de Cloud WAF en Español - 2024",
+            "Data Center - Course Completion - 2025",
+            "Cloud WAF Certification - 2025",
+            "Cloud WAF Trainig - 2025",
+            "Cyber Controller Plus Training - 2025"
+          ]
         },
-		{
+        {
           category: "Academia HackerMentor",
-		  items: ["Ethical Hacking y Pentesting - 2024", "Curso Auditor ISO 27001 2022 Fundamentals - 2025","Ciberseguridad y Ethical Hacking - 2025"]
+          items: [
+            "Ethical Hacking y Pentesting - 2024",
+            "Curso Auditor ISO 27001 2022 Fundamentals - 2025",
+            "Ciberseguridad y Ethical Hacking - 2025"
+          ]
         },
-		{
+        {
           category: "Instituto Profesional Santo Tomás",
-		  items: ["Técnico de Nivel Superior Analista Programador - 2011",]
+          items: ["Técnico de Nivel Superior Analista Programador - 2011"]
         },
-		{
+        {
           category: "Capacitación USACH",
-		  items: ["Fundamentos de Arquitectura, Seguridad, Devops y Compliance en la Nube - 2022", "Fundamentos de Red Team - 2023",]
+          items: [
+            "Fundamentos de Arquitectura, Seguridad, Devops y Compliance en la Nube - 2022",
+            "Fundamentos de Red Team - 2023"
+          ]
         },
-		{
+        {
           category: "Otros",
-		  items: ["Linux Latin America | Administración de Servidores con GNU LINUX - 2016", "AttackIQ | Foundations of Operationalizing MITRE ATT&CK - 2022","Trend Micro | Deep Security 20 Certified Professional - 2022", "Udemy | ISO IEC 27001 Implementando Seguridad de la Información - Grover Vásquez - 2025"]
-        },
-		
+          items: [
+            "Linux Latin America | Administración de Servidores con GNU LINUX - 2016",
+            "AttackIQ | Foundations of Operationalizing MITRE ATT&CK - 2022",
+            "Trend Micro | Deep Security 20 Certified Professional - 2022",
+            "Udemy | ISO IEC 27001 Implementando Seguridad de la Información - Grover Vásquez - 2025"
+          ]
+        }
       ],
-		skills: {
-		  "Seguridad de aplicaciones": [
-			"Cloud WAF",
-			"WAF/WAAP",
-			"Imperva",
-			"Radware Cloud WAF",
-			"Bot Manager",
-			"OWASP Top 10",
-			"Security Headers",
-			"CSP",
-			"Gestión de API"
-		  ],
 
-		  "Anti-DDoS y seguridad de redes": [
-			"DDoS",
-			"DefensePro-X",
-			"Seguridad de redes",
-			"Networking",
-			"TCP/IP",
-			"DNS",
-			"VPN",
-			"Operaciones de redes informáticas",
-			"Gestión de redes"
-		  ],
-
-		  "Cloud y arquitectura": [
-			"Cloud Computing",
-			"Azure",
-			"Fundamentos de arquitectura cloud",
-			"Seguridad cloud",
-			"DevOps",
-			"Compliance en la nube"
-		  ],
-
-		  "Herramientas y frameworks de seguridad": [
-			"Cyber Controller",
-			"Cyber Controller Plus",
-			"MITRE ATT&CK",
-			"Deep Security",
-			"SIEM",
-			"Logs",
-			"Wireshark",
-			"Nmap",
-			"Kali Linux"
-		  ],
-
-		  "Sistemas e infraestructura": [
-			"Linux",
-			"Windows Server",
-			"Administración de sistemas Linux",
-			"Administración de sistemas",
-			"Administración de servidores",
-			"Servidores",
-			"Active Directory",
-			"Office 365",
-			"Citrix"
-		  ],
-
-		  "Ciberseguridad ofensiva": [
-			"Ethical Hacking",
-			"Penetration Testing",
-			"Pentesting",
-			"Análisis de vulnerabilidades"
-		  ],
-
-		  "Hosting y correo": [
-			"cPanel",
-			"WHM",
-			"Plesk",
-			"Exim",
-			"Mdaemon",
-			"Microsoft Exchange",
-			"Correo electrónico"
-		  ],
-
-		  "Soporte y análisis técnico": [
-			"Soporte Técnico",
-			"Resolución de problemas",
-			"Análisis de sistemas",
-			"Análisis de sistemas informáticos",
-			"Atención al cliente",
-			"Microsoft Office"
-		  ]
-		},
-
-
-		workflow: [
-		  "Priorizo la continuidad del servicio al aplicar cambios de seguridad en producción.",
-		  "Valido eventos y patrones de tráfico antes de bloquear, para reducir falsos positivos.",
-		  "Ajusto políticas WAF/WAAP considerando riesgo, evidencia técnica e impacto en el negocio.",
-		  "Documento cambios relevantes para facilitar seguimiento, auditoría y respuesta ante incidentes.",
-		  "Trabajo con monitoreo constante para medir el impacto de reglas, mitigaciones y excepciones."
-		],
-
+      workflow: [
+        "Priorizo la continuidad del servicio al aplicar cambios de seguridad en producción.",
+        "Valido eventos y patrones de tráfico antes de bloquear, para reducir falsos positivos.",
+        "Ajusto políticas WAF/WAAP considerando riesgo, evidencia técnica e impacto en el negocio.",
+        "Documento cambios relevantes para facilitar seguimiento, auditoría y respuesta ante incidentes.",
+        "Trabajo con monitoreo constante para medir el impacto de reglas, mitigaciones y excepciones."
+      ],
 
       contact: {
         linkedin: "#",
-        email: "Disponible bajo solicitud"
+        linkedinLabel: "Bajo solicitud",
+        email: "victor.avilex" // si lo encontraste aqui, enviame un gmail, pensamos parecido (:
       }
     };
-
-
-    // RENDER
 
     document.getElementById("name").textContent = profile.name;
     document.getElementById("role").textContent = profile.role;
@@ -298,66 +358,86 @@
     const btn = document.getElementById("cvButton");
     btn.textContent = profile.cv.label;
     btn.href = profile.cv.link;
-	
-	if (!profile.cv.visible) {
-  btn.style.display = "none";
-}
 
-	// WhatIDo
-	const whatList = document.getElementById("whatIDo");
+    if (!profile.cv.visible) {
+      btn.style.display = "none";
+    }
 
-	profile.whatIDo.forEach(item => {
-	  const li = document.createElement("li");
-	  const separatorIndex = item.indexOf(":");
+    const whatList = document.getElementById("whatIDo");
 
-	  if (separatorIndex !== -1) {
-		const label = document.createElement("strong");
-		label.textContent = item.slice(0, separatorIndex);
+    profile.whatIDo.forEach(item => {
+      const li = document.createElement("li");
+      const separatorIndex = item.indexOf(":");
 
-		li.appendChild(label);
-		li.append(": " + item.slice(separatorIndex + 1).trim());
-	  } else {
-		li.textContent = item;
-	  }
+      if (separatorIndex !== -1) {
+        const label = document.createElement("strong");
+        label.textContent = item.slice(0, separatorIndex);
 
-	  whatList.appendChild(li);
-	});
-	
-	// Experiencia Laboral
-	const experienceSection = document.getElementById("experienceSection");
-	const experienceContainer = document.getElementById("experience");
+        li.appendChild(label);
+        li.append(": " + item.slice(separatorIndex + 1).trim());
+      } else {
+        li.textContent = item;
+      }
 
-	if (!profile.experienceVisible) {
-	  experienceSection.style.display = "none";
-	} else {
-	  profile.experience.forEach(job => {
-		const div = document.createElement("div");
-		div.className = "card";
+      whatList.appendChild(li);
+    });
 
-		const title = document.createElement("strong");
-		title.textContent = job.role;
+    const experienceSection = document.getElementById("experienceSection");
+    const experienceContainer = document.getElementById("experience");
 
-		const meta = document.createElement("p");
-		meta.className = "muted";
-		meta.textContent = `${job.company} | ${job.period}`;
+    if (!profile.experienceVisible) {
+      experienceSection.style.display = "none";
+    } else {
+      profile.experience.forEach(job => {
+        const div = document.createElement("div");
+        div.className = "card";
 
-		const ul = document.createElement("ul");
+        const title = document.createElement("strong");
+        title.textContent = job.role;
 
-		job.items.forEach(item => {
-		  const li = document.createElement("li");
-		  li.textContent = item;
-		  ul.appendChild(li);
-		});
+        const meta = document.createElement("p");
+        meta.className = "muted";
+        meta.textContent = `${job.company} | ${job.period}`;
 
-		div.appendChild(title);
-		div.appendChild(meta);
-		div.appendChild(ul);
-		experienceContainer.appendChild(div);
-	  });
-	}
+        const ul = document.createElement("ul");
 
-    // Skills
+        job.items.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          ul.appendChild(li);
+        });
+
+        div.appendChild(title);
+        div.appendChild(meta);
+        div.appendChild(ul);
+        experienceContainer.appendChild(div);
+      });
+    }
+
+    const certsContainer = document.getElementById("certs");
+
+    profile.certifications.forEach(cert => {
+      const details = document.createElement("details");
+      details.className = "card";
+
+      const summary = document.createElement("summary");
+      summary.textContent = cert.category;
+
+      const ul = document.createElement("ul");
+
+      cert.items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+
+      details.appendChild(summary);
+      details.appendChild(ul);
+      certsContainer.appendChild(details);
+    });
+
     const skillsContainer = document.getElementById("skills");
+
     for (let category in profile.skills) {
       const div = document.createElement("div");
       div.className = "card";
@@ -378,41 +458,35 @@
       skillsContainer.appendChild(div);
     }
 
-    // Certs
-    const certsContainer = document.getElementById("certs");
-	profile.certifications.forEach(cert => {
-		const details = document.createElement("details");
-		details.className = "card";
-
-		const summary = document.createElement("summary");
-		summary.textContent = cert.category;
-
-		const ul = document.createElement("ul");
-
-		cert.items.forEach(item => {
-			const li = document.createElement("li");
-			li.textContent = item;
-			ul.appendChild(li);
-  });
-	
-  details.appendChild(summary);
-  details.appendChild(ul);
-  certsContainer.appendChild(details);
-});
-
-    // Workflow
     const workflowList = document.getElementById("workflow");
+
     profile.workflow.forEach(step => {
       const li = document.createElement("li");
       li.textContent = step;
       workflowList.appendChild(li);
     });
 
-    // Contacto
     const contactDiv = document.getElementById("contact");
+
     contactDiv.innerHTML = `
-      <p><a href="${profile.contact.linkedin}">LinkedIn</a></p>
-      <p class="muted">${profile.contact.email}</p>
+      <div class="contact-row">
+        <span class="contact-label">LinkedIn</span>
+        <a class="contact-value" href="${profile.contact.linkedin}">
+          ${profile.contact.linkedinLabel}
+        </a>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-label">CV</span>
+        <a class="button" href="${profile.cv.link}">
+          ${profile.cv.label}
+        </a>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">${profile.contact.email}</span>
+      </div>
     `;
   </script>
 
